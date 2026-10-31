@@ -1,0 +1,49 @@
+:root { color-scheme: dark; background: #000; color: hsl(185 100% 65%); font-family: system-ui, sans-serif; line-height: 1.55; }
+/* Keep the explicitly requested high-contrast candy palette in Windows forced-colors mode. */
+@media (forced-colors: active) { :root { forced-color-adjust: none; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: #000; }
+main { width: min(100% - 2rem, 90rem); margin: 0 auto; }
+.hero { padding: clamp(3rem, 8vw, 6.5rem) 0 3rem; max-width: 54rem; }
+.eyebrow { color: hsl(315 100% 70%); font-size: .8rem; font-weight: 750; letter-spacing: .11em; text-transform: uppercase; margin: 0 0 .65rem; }
+h1, h2 { line-height: 1.05; margin: 0; }
+h1 { color: hsl(55 100% 62%); font-size: clamp(2.9rem, 7vw, 6rem); letter-spacing: -.045em; }
+h2 { color: hsl(185 100% 65%); font-size: clamp(1.7rem, 3vw, 2.8rem); letter-spacing: -.025em; }
+.intro { color: hsl(185 100% 65%); font-size: clamp(1.1rem, 2vw, 1.35rem); max-width: 43rem; margin: 1.2rem 0 0; }
+.section-heading { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1.5rem; }
+.view-picker { display: flex; flex-wrap: wrap; gap: .55rem; }
+button { appearance: none; border: 2px solid hsl(200 100% 50%); background: #000; color: hsl(185 100% 65%); border-radius: .7rem; padding: .65rem 1rem; font: inherit; font-weight: 700; cursor: pointer; }
+button:hover { border-color: hsl(55 100% 62%); color: hsl(55 100% 62%); }
+button[aria-pressed="true"] { border-color: hsl(185 100% 50%); background: hsl(185 100% 50%); color: #000; }
+button:focus-visible, a:focus-visible { outline: 3px solid hsl(55 100% 62%); outline-offset: 4px; }
+.status { color: hsl(185 100% 65%); margin: .8rem 0 1.3rem; }
+.gallery { display: grid; gap: 1.5rem; }
+.study { margin: 0; border: 2px solid hsl(230 100% 40%); border-radius: 1rem; overflow: hidden; background: #000; }
+.study[hidden] { display: none; }
+.study > img, .fruit-crop img { display: block; width: 100%; height: auto; }
+.fruit-crop { position: relative; aspect-ratio: 3 / 1; overflow: hidden; background: #000; }
+.fruit-crop img { position: absolute; inset-inline: 0; }
+.crop-inside img { top: 0; }
+.crop-outside img { top: -100%; }
+figcaption { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem 1rem; padding: 1rem 1.2rem 1.2rem; color: hsl(185 100% 65%); }
+figcaption strong { color: hsl(55 100% 62%); font-size: 1.1rem; }
+.notes { max-width: 54rem; padding: 5rem 0 3rem; }
+.notes p:not(.eyebrow) { color: hsl(185 100% 65%); font-size: 1.05rem; }
+a { color: hsl(55 100% 62%); text-underline-offset: .16em; }
+footer { border-top: 1px solid hsl(230 100% 40%); color: hsl(185 100% 65%); padding: 1.5rem 0 3rem; }
+.palette-tools { display: flex; flex-wrap: wrap; align-items: center; gap: .7rem 1rem; margin: 2rem 0 1rem; }
+.palette-tools label { color: hsl(55 100% 62%); font-weight: 700; }
+.palette-tools input { flex: 1 1 18rem; max-width: 38rem; background: #000; color: hsl(185 100% 65%); border: 2px solid hsl(200 100% 50%); border-radius: .6rem; padding: .75rem; font: inherit; }
+.palette-tools input:focus-visible { outline: 3px solid hsl(55 100% 62%); outline-offset: 4px; }
+input::placeholder { color: hsl(200 100% 65%); }
+.table-wrap { overflow-x: auto; border: 2px solid hsl(230 100% 40%); border-radius: .8rem; }
+table { border-collapse: collapse; width: 100%; text-align: left; }
+th, td { padding: .8rem; border-bottom: 1px solid hsl(230 100% 35%); }
+th { color: hsl(55 100% 62%); }
+td { color: hsl(185 100% 65%); }
+.identity { min-width: 14rem; overflow-wrap: anywhere; }
+code { color: hsl(185 100% 65%); white-space: nowrap; }
+.color-swatch { display: inline-block; width: 2rem; height: 2rem; vertical-align: middle; margin-right: .6rem; border-radius: .3rem; }
+.pagination { display: flex; align-items: center; justify-content: center; gap: 1rem; padding: 1.5rem 0; }
+button:disabled { color: hsl(200 100% 55%); border-color: hsl(200 100% 30%); cursor: default; }
+@media (max-width: 600px) { main { width: min(100% - 1.2rem, 90rem); } .hero { padding-top: 3rem; } button { flex: 1 0 auto; } .view-picker { width: 100%; } }

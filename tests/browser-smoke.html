@@ -1,0 +1,23 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Color plan browser smoke test</title>
+<pre id="result">WAITING</pre>
+<iframe title="Color plan under test" src="../colors.html"></iframe>
+<script>
+  const frame = document.querySelector('iframe');
+  const result = document.querySelector('#result');
+  frame.addEventListener('load', () => {
+    try {
+      const doc = frame.contentDocument;
+      const rows = () => [...doc.querySelectorAll('#icon-rows tr')];
+      if (rows().length !== 80 || !doc.querySelector('#result-status').textContent.includes('1043')) throw Error('Initial rows not rendered.');
+      doc.querySelector('#next').click();
+      if (!doc.querySelector('#page-status').textContent.includes('Page 2')) throw Error('Next page failed.');
+      const search = doc.querySelector('#icon-search');
+      search.value = 'folder-open';
+      search.dispatchEvent(new frame.contentWindow.Event('input', {bubbles: true}));
+      if (!rows().length || rows().some(row => !row.textContent.toLowerCase().includes('folder-open'))) throw Error('Filtering failed.');
+      result.textContent = 'PASS';
+    } catch (error) { result.textContent = 'FAIL: ' + error.message; }
+  });
+</script>
