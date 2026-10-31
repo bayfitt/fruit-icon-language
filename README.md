@@ -12,4 +12,4 @@ With Node.js installed, run `node --test tests/*.test.cjs` to check the gallery,
 
 The images are concept art, not a finished icon pack. Individual icon assets, application integration, small-size rendering, and accessibility verification remain work to do. The gallery does not change Codex Monitor.
 
-Read [DESIGN.md](./DESIGN.md) for the principles and constraints. Project-scoped Codex reviewer definitions live in [the agents directory](./.codex/agents); they can be used when working in a trusted project and are invoked during design work rather than running continuously. Artwork and gallery code are available under the [MIT license](./LICENSE).
+Read [DESIGN.md](./DESIGN.md) for the principles and constraints and [PROMPTS.md](./PROMPTS.md) for the concept-art prompt. Project-scoped Codex reviewer definitions live in [the agents directory](./.codex/agents); they can be used when working in a trusted project and are invoked during design work rather than running continuously. Artwork and gallery code are available under the [MIT license](./LICENSE).
