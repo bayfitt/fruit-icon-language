@@ -17,7 +17,7 @@ bpy.ops.object.select_all(action="SELECT")
 bpy.ops.object.delete(use_global=False)
 
 
-def material(name, color, light_color, noise_scale, bump_strength, roughness=0.4):
+def material(name, color, light_color, noise_scale, bump_strength, roughness=0.4, emission=0.0):
     mat = bpy.data.materials.new(name)
     mat.diffuse_color = (*color, 1)
     mat.use_nodes = True
@@ -27,6 +27,8 @@ def material(name, color, light_color, noise_scale, bump_strength, roughness=0.4
     shader.inputs["Base Color"].default_value = (*color, 1)
     shader.inputs["Roughness"].default_value = roughness
     shader.inputs["Specular IOR Level"].default_value = 0.25
+    shader.inputs["Emission Color"].default_value = (*color, 1)
+    shader.inputs["Emission Strength"].default_value = emission
     coordinates = nodes.new("ShaderNodeTexCoord")
     noise = nodes.new("ShaderNodeTexNoise")
     noise.inputs["Scale"].default_value = noise_scale
@@ -53,17 +55,21 @@ def material(name, color, light_color, noise_scale, bump_strength, roughness=0.4
     return mat
 
 
-skin = material("Magenta fantasy-fruit skin", (0.62, 0.0, 0.18), (0.82, 0.0, 0.28), 16, 0.28)
-rind = material("Lime rind", (0.22, 0.56, 0.0), (0.42, 0.76, 0.0), 22, 0.15, 0.48)
-flesh = material("Turquoise flesh", (0.0, 0.38, 0.35), (0.0, 0.72, 0.50), 12, 0.18, 0.42)
+skin = material("Magenta fantasy-fruit skin", (0.62, 0.0, 0.18), (0.82, 0.0, 0.28), 16, 0.28, emission=0.35)
+rind = material("Lime rind", (0.28, 0.70, 0.0), (0.46, 0.90, 0.0), 22, 0.15, 0.48)
+flesh = material("Turquoise flesh", (0.0, 0.12, 0.10), (0.0, 0.24, 0.18), 12, 0.18, 0.42)
 
 
 def plus_mesh(name, half_arm, reach, depth, bevel):
     """A closed, beveled plus with a planar back, in X/Z, with depth along Y."""
     a, b = half_arm, reach
-    outline = [(-a, -b), (a, -b), (a, -a), (b, -a),
-               (b, a), (a, a), (a, b), (-a, b),
-               (-a, a), (-b, a), (-b, -a), (-a, -a)]
+    # The original fruit has two subtly different organic side arms. Cutting it
+    # once therefore gives two distinct, compatible side profiles.
+    outline = [(-a * 0.97, -b), (a * 1.03, -b), (a, -a),
+               (b * 1.14, -a * 0.92), (b * 1.14, a * 0.90),
+               (a, a), (a * 0.97, b), (-a * 1.03, b),
+               (-a, a), (-b * 0.94, a * 1.03),
+               (-b * 0.94, -a * 0.92), (-a, -a)]
     count = len(outline)
     verts = [(x, -depth / 2, z) for x, z in outline]
     verts += [(x, depth / 2, z) for x, z in outline]
@@ -123,9 +129,10 @@ def mesh_stats(obj):
     return stats
 
 
-outer = plus_mesh("Whole fruit solid", 0.62, 1.60, 1.60, 0.20)
-middle = plus_mesh("Inside of skin", 0.49, 1.46, 1.30, 0.15)
-core = plus_mesh("Inside of rind", 0.36, 1.32, 1.00, 0.10)
+outer_depth = 0.96
+outer = plus_mesh("Whole fruit solid", 0.62, 1.60, outer_depth, 0.18)
+middle = plus_mesh("Inside of skin", 0.49, 1.46, outer_depth * 0.94 / 1.18, 0.13)
+core = plus_mesh("Inside of rind", 0.36, 1.32, outer_depth * 0.70 / 1.18, 0.09)
 whole_stats = mesh_stats(outer)
 assert whole_stats["nonmanifold_edges"] == 0
 
@@ -167,7 +174,7 @@ left_cutter = halfspace("Left half-space x <= 0", -5, 0)
 right_cutter = halfspace("Right half-space x >= 0", 0, 5)
 after = {"left": {}, "right": {}}
 cut_halves = []
-hinge_y = 0.8  # back edge of the uncut fruit
+hinge_y = outer_depth / 2  # back edge of the uncut fruit
 gap = 0.10
 for side, cutter, angle in (("left", left_cutter, -70), ("right", right_cutter, 70)):
     pivot = bpy.data.objects.new(side.title() + " cut rotation", None)
@@ -254,6 +261,8 @@ def area_light(name, loc, color, energy, size):
 area_light("Rose key", (-3, -5, 7), (1, 0.55, 0.75), 520, 6)
 area_light("Cyan fill", (4, -4, 4), (0.45, 1, 0.95), 460, 5)
 area_light("Violet rim", (0, 3, 5), (0.62, 0.25, 1), 600, 4)
+area_light("Left side fill", (-7, -3, 1), (1, 0.30, 0.62), 280, 5)
+area_light("Right side fill", (7, -3, 1), (1, 0.30, 0.62), 280, 5)
 camera_data = bpy.data.cameras.new("Camera")
 camera = bpy.data.objects.new("Camera", camera_data)
 bpy.context.collection.objects.link(camera)
@@ -268,6 +277,7 @@ bpy.context.view_layer.update()
 to_camera = camera.matrix_world.to_quaternion() @ Vector((0, 0, 1))
 face_dots = {}
 projected = []
+side_extensions = {}
 for obj in [whole_display, *cut_halves]:
     if obj in cut_halves:
         dots = []
@@ -280,6 +290,16 @@ for obj in [whole_display, *cut_halves]:
     for vertex in obj.data.vertices:
         projected.append(world_to_camera_view(scene, camera, obj.matrix_world @ vertex.co))
 
+    if obj.name in ("Left skin", "Right skin"):
+        cap_x = [world_to_camera_view(scene, camera, obj.matrix_world @ v.co).x
+                 for v in obj.data.vertices if abs(v.co.x) < 1e-6]
+        side_x = [world_to_camera_view(scene, camera, obj.matrix_world @ v.co).x
+                  for v in obj.data.vertices if abs(v.co.x) > 0.9]
+        assert cap_x and side_x, obj.name
+        extension = min(cap_x) - min(side_x) if obj.name.startswith("Left") else max(side_x) - max(cap_x)
+        assert extension > 0.02, (obj.name, extension)
+        side_extensions[obj.name] = extension
+
 frame = {
     "min_x": min(v.x for v in projected), "max_x": max(v.x for v in projected),
     "min_y": min(v.y for v in projected), "max_y": max(v.y for v in projected),
@@ -289,6 +309,7 @@ assert frame["min_y"] > 0.02 and frame["max_y"] < 0.98, frame
 assert min(v.z for v in projected) > 0, "A visible vertex is behind the camera"
 report["minimum_cut_face_dot_toward_camera"] = face_dots
 report["projected_frame_bounds"] = frame
+report["projected_outer_side_extension_fraction_of_frame"] = side_extensions
 (HERE / "geometry-report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
 
 bpy.context.preferences.filepaths.save_version = 0

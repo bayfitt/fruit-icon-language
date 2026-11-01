@@ -6,67 +6,67 @@
   },
   "pivot": "original rear edge of the cut plane, with a small outward spacing",
   "whole": {
-    "volume": 9.945660532240959,
+    "volume": 5.997837076740651,
     "nonmanifold_edges": 0,
     "faces": 446
   },
   "layers_before_cut": {
     "skin": {
-      "volume": 3.901188848274215,
+      "volume": 2.4192311851349646,
       "nonmanifold_edges": 0,
       "faces": 892,
-      "relative_split_volume_error": 5.713622664000785e-10
+      "relative_split_volume_error": 5.506987665074526e-16
     },
     "rind": {
-      "volume": 2.8191425534954595,
+      "volume": 1.735371824525578,
       "nonmanifold_edges": 0,
       "faces": 892,
-      "relative_split_volume_error": 7.906672351706296e-10
+      "relative_split_volume_error": 4.6062784149941165e-15
     },
     "flesh": {
-      "volume": 3.225329130471285,
+      "volume": 1.8432340670801008,
       "nonmanifold_edges": 0,
       "faces": 446,
-      "relative_split_volume_error": 4.1306408606910666e-16
+      "relative_split_volume_error": 0.0
     }
   },
   "halves_before_rotation": {
     "left": {
       "skin": {
-        "volume": 1.9505944251983007,
+        "volume": 1.1407573131549826,
         "nonmanifold_edges": 0,
         "faces": 468
       },
       "rind": {
-        "volume": 1.4095712763400279,
+        "volume": 0.8209040662210719,
         "nonmanifold_edges": 0,
         "faces": 468
       },
       "flesh": {
-        "volume": 1.6126645645821462,
+        "volume": 0.8767113983832755,
         "nonmanifold_edges": 0,
         "faces": 234
       }
     },
     "right": {
       "skin": {
-        "volume": 1.9505944253049066,
+        "volume": 1.2784738719799835,
         "nonmanifold_edges": 0,
         "faces": 468
       },
       "rind": {
-        "volume": 1.4095712749264282,
+        "volume": 0.9144677583045141,
         "nonmanifold_edges": 0,
         "faces": 468
       },
       "flesh": {
-        "volume": 1.61266456588914,
+        "volume": 0.9665226686968255,
         "nonmanifold_edges": 0,
         "faces": 234
       }
     }
   },
-  "relative_layer_volume_error": 1.7860622063681087e-16,
+  "relative_layer_volume_error": 1.3327480681827754e-15,
   "interpretation": "Geometric model and static illustration, not production icon artwork or accessibility proof.",
   "minimum_cut_face_dot_toward_camera": {
     "Left skin": 0.9167733192443848,
@@ -77,9 +77,13 @@
     "Right flesh": 0.9167733192443848
   },
   "projected_frame_bounds": {
-    "min_x": 0.06372550129890442,
-    "max_x": 0.935706615447998,
-    "min_y": 0.19395191967487335,
-    "max_y": 0.8267278075218201
+    "min_x": 0.07313723862171173,
+    "max_x": 0.8848100304603577,
+    "min_y": 0.2058810591697693,
+    "max_y": 0.8157259821891785
+  },
+  "projected_outer_side_extension_fraction_of_frame": {
+    "Left skin": 0.045442819595336914,
+    "Right skin": 0.056172311305999756
   }
 }
