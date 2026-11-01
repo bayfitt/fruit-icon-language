@@ -1,0 +1,270 @@
+{
+  "description": "One modeled plus-shaped fruit with curved front and back, an offset stem, a blossom mark, and a central chamber of three seeds.",
+  "cut_plane": "x=0, vertical top-to-bottom",
+  "half_rotations_degrees_about_vertical_z": {
+    "left": -70,
+    "right": 70
+  },
+  "front_and_back_profile": {
+    "front_center_y": -0.7200000286102295,
+    "back_center_y": 0.7200000286102295,
+    "front_sample_quarter_y": -0.6651932597160339,
+    "front_sample_half_y": -0.5091168880462646,
+    "back_sample_quarter_y": 0.6651932597160339,
+    "back_sample_half_y": 0.5091168880462646,
+    "shared_perimeter_y": -4.408728404608808e-17
+  },
+  "whole_fruit": {
+    "volume": 5.872973175036137,
+    "nonmanifold_edges": 0,
+    "zero_area_faces": 0,
+    "faces": 4608
+  },
+  "nested_containment": {
+    "rind_outside_skin_volume": 0.0,
+    "flesh_outside_rind_volume": 0.0,
+    "chamber_outside_flesh_volume": 0.0,
+    "pockets_outside_chamber_volume": 0.0,
+    "seeds_outside_pockets_volume": 0.0
+  },
+  "original_seeds": [
+    {
+      "name": "Seed 1",
+      "center_x": 0.012,
+      "center_y": -0.035,
+      "center_z": -0.39,
+      "radii": [
+        0.075,
+        0.08,
+        0.14
+      ],
+      "lean_degrees": -14,
+      "crosses_cut_plane": true,
+      "mesh": {
+        "volume": 0.0025831892005382944,
+        "nonmanifold_edges": 0,
+        "zero_area_faces": 0,
+        "faces": 640
+      }
+    },
+    {
+      "name": "Seed 2",
+      "center_x": 0.012,
+      "center_y": 0.04,
+      "center_z": 0.0,
+      "radii": [
+        0.085,
+        0.09,
+        0.16
+      ],
+      "lean_degrees": 16,
+      "crosses_cut_plane": true,
+      "mesh": {
+        "volume": 0.003764075878957363,
+        "nonmanifold_edges": 0,
+        "zero_area_faces": 0,
+        "faces": 640
+      }
+    },
+    {
+      "name": "Seed 3",
+      "center_x": 0.012,
+      "center_y": -0.035,
+      "center_z": 0.39,
+      "radii": [
+        0.07,
+        0.075,
+        0.13
+      ],
+      "lean_degrees": -11,
+      "crosses_cut_plane": true,
+      "mesh": {
+        "volume": 0.0020988412410325994,
+        "nonmanifold_edges": 0,
+        "zero_area_faces": 0,
+        "faces": 640
+      }
+    }
+  ],
+  "matched_seed_sections": [
+    {
+      "name": "Seed 1",
+      "left_cap_area": 0.029018862376688048,
+      "right_cap_area": 0.02901886191102676,
+      "left_volume": 0.000935375690989578,
+      "right_volume": 0.0016478131456243133,
+      "max_corresponding_cap_point_distance": 0.0
+    },
+    {
+      "name": "Seed 2",
+      "left_cap_area": 0.03759686308330856,
+      "right_cap_area": 0.03759686236298876,
+      "left_volume": 0.001422910120677226,
+      "right_volume": 0.0023411657571384592,
+      "max_corresponding_cap_point_distance": 0.0
+    },
+    {
+      "name": "Seed 3",
+      "left_cap_area": 0.025115670257946476,
+      "right_cap_area": 0.02511566987959668,
+      "left_volume": 0.0007398392912651988,
+      "right_volume": 0.0013590018710999403,
+      "max_corresponding_cap_point_distance": 0.0
+    }
+  ],
+  "layers_before_cut": {
+    "skin": {
+      "volume": 1.5915760927303146,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0,
+      "faces": 9216,
+      "relative_split_volume_error": 1.3482618118338383e-11
+    },
+    "rind": {
+      "volume": 1.5897935530998208,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0,
+      "faces": 13632,
+      "relative_split_volume_error": 1.3920931918694979e-11
+    },
+    "flesh": {
+      "volume": 2.5315766639885213,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0,
+      "faces": 9664,
+      "relative_split_volume_error": 2.7391484100037507e-11
+    },
+    "chamber": {
+      "volume": 0.14694516215547498,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0,
+      "faces": 2560,
+      "relative_split_volume_error": 1.4831163989143835e-10
+    },
+    "pockets": {
+      "volume": 0.004635597085178364,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0,
+      "faces": 3840,
+      "relative_split_volume_error": 2.35818396232975e-09
+    },
+    "seeds": {
+      "volume": 0.008446106321575312,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0,
+      "faces": 1920,
+      "relative_split_volume_error": 1.3520637556791428e-09
+    }
+  },
+  "halves_before_rotation": {
+    "left": {
+      "skin": {
+        "volume": 0.7957880462046556,
+        "nonmanifold_edges": 0,
+        "zero_area_faces": 0,
+        "faces": 4610
+      },
+      "rind": {
+        "volume": 0.7948967765609694,
+        "nonmanifold_edges": 0,
+        "zero_area_faces": 0,
+        "faces": 6818
+      },
+      "flesh": {
+        "volume": 1.273359706985845,
+        "nonmanifold_edges": 0,
+        "zero_area_faces": 0,
+        "faces": 4826
+      },
+      "chamber": {
+        "volume": 0.06740144970120597,
+        "nonmanifold_edges": 0,
+        "zero_area_faces": 0,
+        "faces": 1124
+      },
+      "pockets": {
+        "volume": 0.001942482863362646,
+        "nonmanifold_edges": 0,
+        "zero_area_faces": 0,
+        "faces": 1570
+      },
+      "seeds": {
+        "volume": 0.0030981252393215484,
+        "nonmanifold_edges": 0,
+        "zero_area_faces": 0,
+        "faces": 759
+      }
+    },
+    "right": {
+      "skin": {
+        "volume": 0.7957880465471177,
+        "nonmanifold_edges": 0,
+        "zero_area_faces": 0,
+        "faces": 4610
+      },
+      "rind": {
+        "volume": 0.7948967765609829,
+        "nonmanifold_edges": 0,
+        "zero_area_faces": 0,
+        "faces": 6818
+      },
+      "flesh": {
+        "volume": 1.25821695707202,
+        "nonmanifold_edges": 0,
+        "zero_area_faces": 0,
+        "faces": 4910
+      },
+      "chamber": {
+        "volume": 0.07954371243247532,
+        "nonmanifold_edges": 0,
+        "zero_area_faces": 0,
+        "faces": 1710
+      },
+      "pockets": {
+        "volume": 0.0026931142108841274,
+        "nonmanifold_edges": 0,
+        "zero_area_faces": 0,
+        "faces": 2670
+      },
+      "seeds": {
+        "volume": 0.0053479810708340885,
+        "nonmanifold_edges": 0,
+        "zero_area_faces": 0,
+        "faces": 1357
+      }
+    }
+  },
+  "relative_layer_volume_error": 5.870095228891309e-11,
+  "stem": {
+    "description": "One separate curved stem mesh intersects the skin and lies entirely on the left side of the cut; the meshes are not boolean-unioned.",
+    "intersection_with_skin_volume": 0.0020049732928919435,
+    "mesh": {
+      "volume": 0.004608190921637204,
+      "nonmanifold_edges": 0,
+      "zero_area_faces": 0,
+      "faces": 596
+    }
+  },
+  "blossom_mark": "One centered material mark in original-object coordinates is divided by the cut.",
+  "limitations": "Static geometry study, not finalized icon artwork or proof of small-size accessibility.",
+  "minimum_cut_face_dot_toward_camera": {
+    "Left skin": 0.9350290894508362,
+    "Left rind": 0.9350290894508362,
+    "Left flesh": 0.9350290894508362,
+    "Left chamber": 0.9350290894508362,
+    "Left pockets": 0.9350290894508362,
+    "Left seeds": 0.9350290894508362,
+    "Right skin": 0.9350290894508362,
+    "Right rind": 0.9350290894508362,
+    "Right flesh": 0.9350290894508362,
+    "Right chamber": 0.9350290894508362,
+    "Right pockets": 0.9350290894508362,
+    "Right seeds": 0.9350290894508362
+  },
+  "projected_frame_bounds": {
+    "min_x": 0.0508463978767395,
+    "max_x": 0.9403797388076782,
+    "min_y": 0.16716396808624268,
+    "max_y": 0.8716281056404114
+  }
+}

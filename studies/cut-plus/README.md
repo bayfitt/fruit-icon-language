@@ -1,5 +1,7 @@
 # One cut-open plus: geometry study
 
+This earlier prototype has a flat back and no seeds, and is retained as a historical study. The current direction, clarified later, has a rounded front and back and visible seed structures.
+
 The [render](./cut-plus-geometry.png) compares one intact plus-shaped fantasy fruit with two pieces cut from the same shape. The [script](./build_cut_plus.py) recreates the Blender scene using its Python API. The generated `.blend` stays local because Blender files can contain absolute local paths. This is a static geometry study, not a finished icon or a small-size legibility and contrast test. Its interior is deliberately simple and still needs a more convincing fruit structure and texture.
 
 The model is one closed, flat-backed plus with modeled skin, rind, and flesh. It is cut vertically through the middle, and the two real halves are turned outward 70 degrees around the back edge of the cut, then spaced apart slightly. A straight cut through this particular solid makes long, roughly rectangular cross-sections; it does not magically create half-plus-shaped cross-sections. The original fruit has subtly different organic arms on either side. Its actual exterior remains visible beyond the cut faces, giving the two pieces different side profiles.
