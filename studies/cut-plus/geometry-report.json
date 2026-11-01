@@ -1,0 +1,85 @@
+{
+  "cut_plane": "x=0, vertical top-to-bottom",
+  "half_rotations_degrees_about_vertical_z": {
+    "left": -70,
+    "right": 70
+  },
+  "pivot": "original rear edge of the cut plane, with a small outward spacing",
+  "whole": {
+    "volume": 9.945660532240959,
+    "nonmanifold_edges": 0,
+    "faces": 446
+  },
+  "layers_before_cut": {
+    "skin": {
+      "volume": 3.901188848274215,
+      "nonmanifold_edges": 0,
+      "faces": 892,
+      "relative_split_volume_error": 5.713622664000785e-10
+    },
+    "rind": {
+      "volume": 2.8191425534954595,
+      "nonmanifold_edges": 0,
+      "faces": 892,
+      "relative_split_volume_error": 7.906672351706296e-10
+    },
+    "flesh": {
+      "volume": 3.225329130471285,
+      "nonmanifold_edges": 0,
+      "faces": 446,
+      "relative_split_volume_error": 4.1306408606910666e-16
+    }
+  },
+  "halves_before_rotation": {
+    "left": {
+      "skin": {
+        "volume": 1.9505944251983007,
+        "nonmanifold_edges": 0,
+        "faces": 468
+      },
+      "rind": {
+        "volume": 1.4095712763400279,
+        "nonmanifold_edges": 0,
+        "faces": 468
+      },
+      "flesh": {
+        "volume": 1.6126645645821462,
+        "nonmanifold_edges": 0,
+        "faces": 234
+      }
+    },
+    "right": {
+      "skin": {
+        "volume": 1.9505944253049066,
+        "nonmanifold_edges": 0,
+        "faces": 468
+      },
+      "rind": {
+        "volume": 1.4095712749264282,
+        "nonmanifold_edges": 0,
+        "faces": 468
+      },
+      "flesh": {
+        "volume": 1.61266456588914,
+        "nonmanifold_edges": 0,
+        "faces": 234
+      }
+    }
+  },
+  "relative_layer_volume_error": 1.7860622063681087e-16,
+  "interpretation": "Geometric model and static illustration, not production icon artwork or accessibility proof.",
+  "minimum_cut_face_dot_toward_camera": {
+    "Left skin": 0.9167733192443848,
+    "Left rind": 0.9167733192443848,
+    "Left flesh": 0.9167733192443848,
+    "Right skin": 0.9167733192443848,
+    "Right rind": 0.9167733192443848,
+    "Right flesh": 0.9167733192443848
+  },
+  "projected_frame_bounds": {
+    "min_x": 0.06372550129890442,
+    "max_x": 0.935706615447998,
+    "min_y": 0.19395191967487335,
+    "max_y": 0.8267278075218201
+  }
+}

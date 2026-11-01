@@ -1,0 +1,2 @@
+# Blender files can contain absolute local paths; regenerate them from the script.
+/studies/cut-plus/*.blend
